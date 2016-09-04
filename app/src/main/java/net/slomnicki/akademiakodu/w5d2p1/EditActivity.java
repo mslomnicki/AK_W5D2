@@ -12,10 +12,14 @@ import android.widget.EditText;
 import net.slomnicki.akademiakodu.w5d2p1.data.TodoDatabase;
 import net.slomnicki.akademiakodu.w5d2p1.model.TodoItem;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class EditActivity extends AppCompatActivity {
     public static final String EXTRA_ID = "id";
-    private EditText mTitle, mNote;
-    private CheckBox mDone;
+    @BindView(R.id.title) EditText mTitle;
+    @BindView(R.id.done) CheckBox mDone;
+    @BindView(R.id.note) EditText mNote;
     private int mPosition;
 
     public static void startActivity(Context context, int position) {
@@ -28,9 +32,7 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-        mTitle = (EditText) findViewById(R.id.title);
-        mDone = (CheckBox) findViewById(R.id.done);
-        mNote = (EditText) findViewById(R.id.note);
+        ButterKnife.bind(this);
         if (!validateInput()) return;
         TodoItem item = getItem();
         mTitle.setText(item.getTitle());

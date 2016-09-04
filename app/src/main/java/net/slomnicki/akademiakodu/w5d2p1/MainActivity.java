@@ -10,8 +10,11 @@ import android.view.MenuItem;
 import net.slomnicki.akademiakodu.w5d2p1.data.TodoDatabase;
 import net.slomnicki.akademiakodu.w5d2p1.model.TodoItem;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements TodoItemAdapter.OnTodoItemClick {
-    private RecyclerView mList;
+    @BindView(R.id.list) RecyclerView mList;
     private TodoItemAdapter mAdapter;
 
     @Override
@@ -19,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements TodoItemAdapter.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("Lista zadań");
-        mList = (RecyclerView) findViewById(R.id.list);
+        ButterKnife.bind(this);
         // Stage 1 - ustawienie layoutu - LinearLayoutManager(V/H)/GridLayoutManager
         mList.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new TodoItemAdapter(TodoDatabase.getItems());

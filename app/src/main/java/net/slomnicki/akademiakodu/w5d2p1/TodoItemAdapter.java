@@ -1,17 +1,17 @@
 package net.slomnicki.akademiakodu.w5d2p1;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import net.slomnicki.akademiakodu.w5d2p1.data.TodoDatabase;
 import net.slomnicki.akademiakodu.w5d2p1.model.TodoItem;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class TodoItemAdapter extends RecyclerView.Adapter<TodoItemAdapter.TodoItemViewHolder> {
     private List<TodoItem> mItems;
@@ -47,15 +47,15 @@ public class TodoItemAdapter extends RecyclerView.Adapter<TodoItemAdapter.TodoIt
     }
 
     public class TodoItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView mTitle, mDone;
+        @BindView(R.id.title) TextView mTitle;
+        @BindView(R.id.done) TextView mDone;
         private TodoItem mElement;
         private int mPosition;
 
         public TodoItemViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
-            mTitle = (TextView) itemView.findViewById(R.id.title);
-            mDone = (TextView) itemView.findViewById(R.id.done);
         }
 
         @Override
