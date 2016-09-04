@@ -1,14 +1,11 @@
 package net.slomnicki.akademiakodu.w5d2p1;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import net.slomnicki.akademiakodu.w5d2p1.data.TodoDatabase;
 import net.slomnicki.akademiakodu.w5d2p1.model.TodoItem;
 
 import java.util.List;
